@@ -3,7 +3,15 @@
 int main(int argc, char *argv[]) {
     float temp, converted_temp;
     int input_scale, output_scale;
-
+    /*
+    Was not sure what the argc and argv were meant for so i asked
+    chat gpt to help me with this and hopefully its correct.
+    */
+   /*
+   Anyways basically if the argument count is 4 then it takes each argument and matches it to 
+   its corresponding variable, then it prints a message showing it recieved 
+   all the information from the user.
+   */
     
     if (argc == 4) {
         temp = atof(argv[1]);  
@@ -14,7 +22,10 @@ int main(int argc, char *argv[]) {
         printf("Temperature: %.2f\n", temp);
         printf("Input scale: %d, Output scale: %d\n", input_scale, output_scale);
     }
-    
+    /*
+    if there is no argument provided at main then the program prompts the user
+    for a temperature value, input scale and output scale.
+    */
     else {
         
         printf("Enter the temperature value: ");
@@ -31,7 +42,11 @@ int main(int argc, char *argv[]) {
         scanf("%d", &output_scale);
     }
 
-    
+    /*
+    Now depending on which input and output scale the user chose the corresponding function
+    is called to convert the input scaled temp to the output scaled temp using
+    the users temp and storing it in the converted_temp variable.
+    */
     if (input_scale == 1 && output_scale == 2) {
         converted_temp = celsius_to_fahrenheit(temp);
         printf("Converted temperature: %.2f °F\n", converted_temp);
@@ -54,7 +69,9 @@ int main(int argc, char *argv[]) {
         printf("Invalid input/output scale selection.\n");
         return 1;  
     }
-
+    /*
+    calls the categorize temperature function with the parameter of the converted temp
+    */
     categorize_temperature(converted_temp);
 
     return 0;
